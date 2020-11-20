@@ -1,0 +1,10 @@
+<odoo>
+    <record id="seq_student_identity" model="ir.sequence">
+        <field name="name">Student Identity</field>
+        <field name="code">school.student</field>
+        <field name="prefix">SCH/%(range_year)s/</field>
+        <field name="padding">5</field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+    </record>
+</odoo>

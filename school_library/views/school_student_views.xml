@@ -1,0 +1,63 @@
+<odoo>
+    <record model="ir.ui.view" id="school_student_list">
+        <field name="name">school_student list</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_identity"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="address"/>
+                <field name="date_time_of_joining" optional="show"/>
+                <field name="deposit" sum="Total deposit"/>
+                <field name="remarks" optional="hide"/>
+                <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="school_student_form">
+        <field name="name">School student form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="image_1920" widget="image" class="oe_avatar"
+                               options="{'preview_image': 'image_512'}"/>
+                        <field name="student_identity"/>
+                        <field name="name" widget="password"/>
+                        <field name="phone" widget="password"/>
+                        <field name="address" widget="password"/>
+                    </group>
+                    <group>
+                        <field name="date_time_of_joining" required="1"/>
+                        <field name="deposit"/>
+                        <field name="remarks"/>
+                        <field name="mark"/>
+                        <field name="result"/>
+                        <field name="department_id"/>
+                        <field name="department_hod"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="book" string="Book">
+                        <field name="book_ids"/>
+                    </page>
+                    <!--                    <page name="book" string="Book">-->
+                    <!--                        <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                    <!--                    </page>-->
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="school_student_action_window">
+        <field name="name">Student</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="School" id="school_menu"/>
+    <menuitem name="Students" id="school_student_menu" parent="school_menu" sequence="1"
+              action="school_student_action_window"/>
+</odoo>
