@@ -12,8 +12,6 @@ class SchoolDepartment(models.Model):
     description = fields.Text()
     student_id = fields.One2many('school.student', 'department_id')
 
-    # student_id = fields.Many2one('school.student', string='Students')
-
     @api.model
     def create(self, values):
         print(values)

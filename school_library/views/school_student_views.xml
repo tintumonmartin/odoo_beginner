@@ -4,8 +4,10 @@
         <field name="model">school.student</field>
         <field name="arch" type="xml">
             <tree>
+                <!-- <tree create="false" delete="false" import="false">-->
                 <field name="student_identity"/>
                 <field name="name"/>
+                <field name="active"/>
                 <field name="phone"/>
                 <field name="address"/>
                 <field name="date_time_of_joining" optional="show"/>
@@ -20,12 +22,14 @@
         <field name="model">school.student</field>
         <field name="arch" type="xml">
             <form>
+                <!-- <form duplicate="false">-->
                 <group>
                     <group>
                         <field name="image_1920" widget="image" class="oe_avatar"
                                options="{'preview_image': 'image_512'}"/>
                         <field name="student_identity"/>
-                        <field name="name" widget="password"/>
+                        <field name="name"/>
+                        <field name="active"/>
                         <field name="phone" widget="password"/>
                         <field name="address" widget="password"/>
                     </group>
@@ -40,12 +44,13 @@
                     </group>
                 </group>
                 <notebook>
-                    <page name="book" string="Book">
-                        <field name="book_ids"/>
-                    </page>
                     <!--                    <page name="book" string="Book">-->
-                    <!--                        <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                    <!--                        <field name="book_ids"/>-->
                     <!--                    </page>-->
+                    <page name="book" string="Book">
+                        <field name="book_ids" style="pointer-events: none;" readonly="1" widget="many2many_tags"
+                               options="{'color_field': 'color'}"/>
+                    </page>
                 </notebook>
             </form>
         </field>
