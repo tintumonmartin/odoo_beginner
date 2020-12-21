@@ -8,7 +8,7 @@ class SchoolDepartment(models.Model):
 
     name = fields.Char("Department Name", required=True)
     hod = fields.Char()
-    course_id = fields.Integer()
+    course_ids = fields.One2many('school.course', 'department_id')
     description = fields.Text()
     student_id = fields.One2many('school.student', 'department_id')
 

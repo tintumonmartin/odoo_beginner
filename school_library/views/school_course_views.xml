@@ -1,0 +1,38 @@
+<odoo>
+    <record model="ir.ui.view" id="school_course_list">
+        <field name="name">school_course list</field>
+        <field name="model">school.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="school_course_form">
+        <field name="name">School student form</field>
+        <field name="model">school.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="hod"/>
+                        <field name="department_id"/>
+                    </group>
+                    <group>
+                        <field name="description" required="1"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="school_course_action_window">
+        <field name="name">Course</field>
+        <field name="res_model">school.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="school_course_menu" parent="school_menu" sequence="10" action="school_course_action_window"/>
+</odoo>

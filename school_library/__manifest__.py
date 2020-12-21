@@ -20,6 +20,7 @@
         'views/school_student_views.xml',
         'views/school_teacher_views.xml',
         'views/school_department_views.xml',
+        'views/school_course_views.xml',
         'views/library_book_views.xml',
         'views/templates.xml',
     ],

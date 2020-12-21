@@ -6,9 +6,11 @@
             <tree>
                 <field name="name"/>
                 <field name="description" optional="hide"/>
+                <field name="course_ids" optional="show" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
+
     <record model="ir.ui.view" id="school_department_form">
         <field name="name">School student form</field>
         <field name="model">school.department</field>
@@ -18,7 +20,6 @@
                     <group>
                         <field name="name"/>
                         <field name="hod"/>
-                        <field name="course_id"/>
                     </group>
                     <group>
                         <field name="description" required="1"/>
@@ -34,6 +35,18 @@
                             <form>
                                 <group>
                                     <field name="student_identity"/>
+                                    <field name="name"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                    <page name="course" string="Course">
+                        <field name="course_ids">
+                            <tree>
+                                <field name="name"/>
+                            </tree>
+                            <form>
+                                <group>
                                     <field name="name"/>
                                 </group>
                             </form>
