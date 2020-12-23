@@ -10,6 +10,7 @@
                 <field name="active"/>
                 <field name="phone"/>
                 <field name="address"/>
+                <field name="department_id"/>
                 <field name="date_time_of_joining" optional="show"/>
                 <field name="deposit" sum="Total deposit"/>
                 <field name="remarks" optional="hide"/>
@@ -64,6 +65,5 @@
     </record>
 
     <menuitem name="School" id="school_menu"/>
-    <menuitem name="Students" id="school_student_menu" parent="school_menu" sequence="1"
-              action="school_student_action_window"/>
+    <menuitem id="school_student_menu" parent="school_menu" sequence="1" action="school_student_action_window"/>
 </odoo>
