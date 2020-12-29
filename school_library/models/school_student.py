@@ -11,14 +11,14 @@ class SchoolStudent(models.Model):
 
     name = fields.Char("Student Name", required=True)
     active = fields.Boolean('Active', default=True)
-    user_id = fields.Many2one('res.users', string='Assigned to')
     student_identity = fields.Char(readonly=True)
+    user_id = fields.Many2one('res.users', string='Assigned to')
+    department_id = fields.Many2one('school.department')
     phone = fields.Char(size=10)
     address = fields.Text()
     signature = fields.Binary()
     image_1920 = fields.Image()
     image_512 = fields.Image("Image 512", related="image_1920", max_width=512, max_height=512)
-    department_id = fields.Many2one('school.department')
     department_hod = fields.Char(related='department_id.hod')
     date_time_of_joining = fields.Datetime()
     deposit = fields.Float(default=10000)
@@ -30,6 +30,13 @@ class SchoolStudent(models.Model):
     result = fields.Selection([('pass', 'Pass'), ('fail', 'Fail')], compute="_compute_result")
     book_ids = fields.Many2many('library.book', 'library_book_student_rel', 'student_id', 'book_id',
                                 string="Books", copy=False)
+
+    @api.depends('name', 'student_identity')
+    def name_get(self):
+        result = []
+        for record in self:
+            result.append((record.id, '%s - (%s)' % (record.name, record.student_identity)))
+        return result
 
     @api.depends('mark')
     def _compute_result(self):
@@ -62,8 +69,8 @@ class SchoolStudent(models.Model):
         res = super(SchoolStudent, self).write(values)
         print(self)
         print(self.mark)
-        if not self.mark or self.mark == 0:
-            raise ValidationError(_('Please enter mark 2'))
+        if not self.mark or self.mark < 1:
+            raise ValidationError(_('Please enter valid mark'))
         print(self.phone)
         if self.phone and len(self.phone) != 10:
             raise ValidationError(_('Contact number must have 10 digit! not %s digit and change this value %s' % (

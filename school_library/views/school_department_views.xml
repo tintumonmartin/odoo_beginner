@@ -7,6 +7,8 @@
                 <field name="name"/>
                 <field name="description" optional="hide"/>
                 <field name="course_ids" optional="show" widget="many2many_tags"/>
+                <field name="student_ids" optional="show" widget="many2many_tags"/>
+                <field name="teacher_ids" optional="show" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -27,7 +29,7 @@
                 </group>
                 <notebook>
                     <page name="student" string="Student">
-                        <field name="student_id">
+                        <field name="student_ids">
                             <tree>
                                 <field name="name"/>
                                 <field name="student_identity"/>

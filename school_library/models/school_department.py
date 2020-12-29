@@ -8,9 +8,10 @@ class SchoolDepartment(models.Model):
 
     name = fields.Char("Department Name", required=True)
     hod = fields.Char()
-    course_ids = fields.One2many('school.course', 'department_id')
     description = fields.Text()
-    student_id = fields.One2many('school.student', 'department_id')
+    course_ids = fields.One2many('school.course', 'department_id')
+    student_ids = fields.One2many('school.student', 'department_id')
+    teacher_ids = fields.One2many('school.teacher', 'department_id')
 
     @api.model
     def create(self, values):

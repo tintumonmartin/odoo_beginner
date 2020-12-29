@@ -61,7 +61,7 @@
     <record model="ir.actions.act_window" id="school_student_action_window">
         <field name="name">Student</field>
         <field name="res_model">school.student</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
     </record>
 
     <menuitem name="School" id="school_menu"/>
