@@ -27,7 +27,7 @@ class SchoolStudent(models.Model):
     fine_pending = fields.Float()
     remarks = fields.Text()
     mark = fields.Integer()
-    result = fields.Selection([('pass', 'Pass'), ('fail', 'Fail')], compute="_compute_result")
+    result = fields.Selection([('pass', 'Pass'), ('fail', 'Fail')], compute="_compute_result", store=True)
     book_ids = fields.Many2many('library.book', 'library_book_student_rel', 'student_id', 'book_id',
                                 string="Books", copy=False)
 
@@ -41,7 +41,6 @@ class SchoolStudent(models.Model):
     @api.depends('mark')
     def _compute_result(self):
         for record in self:
-            print(record)
             if record.mark >= 30:
                 record.result = 'pass'
             else:
@@ -88,3 +87,18 @@ class SchoolStudent(models.Model):
     def unlink(self):
         raise ValidationError(_('Not able to delete'))
         return super(SchoolStudent, self).unlink()
+
+    def button_search(self):
+        print(self)
+        school_student = self.env['school.student'].search([])
+        print(school_student)
+
+        print(len(school_student))
+        # for student in school_student:
+        #     print(student)
+        #     print(student.result)
+        school_student = self.env['school.student'].search([('result', '=', 'pass')])
+        print("________________")
+        print(school_student)
+        print(len(school_student))
+        print("school_student")
