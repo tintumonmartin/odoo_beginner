@@ -85,7 +85,7 @@ class SchoolStudent(models.Model):
         return super(SchoolStudent, self).copy(default=default)
 
     def unlink(self):
-        raise ValidationError(_('Not able to delete'))
+        # raise ValidationError(_('Not able to delete'))
         return super(SchoolStudent, self).unlink()
 
     def button_search(self):

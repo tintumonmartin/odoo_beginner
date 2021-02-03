@@ -27,9 +27,13 @@
                     </group>
                     <group>
                         <field name="remarks"/>
-<!--                        <field name="student_id"/>-->
                     </group>
                 </group>
+                <notebook string="Students">
+                    <page>
+                        <field name="student_ids"/>
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>

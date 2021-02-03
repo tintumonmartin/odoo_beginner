@@ -52,6 +52,14 @@
         <field name="domain_force">[('department_id','=',user.student_department_id.id)]</field>
         <field name="groups" eval="[(4,ref('group_teacher'))]"/>
     </record>
+    <record id="student_principal_rule" model="ir.rule">
+        <field name="name">School: Principal</field>
+        <field name="model_id" ref="model_school_student"/>
+        <field name="global" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4,ref('group_principal'))]"/>
+    </record>
     <record id="teacher_teacher_rule" model="ir.rule">
         <field name="name">School: Teacher</field>
         <field name="model_id" ref="model_school_teacher"/>
