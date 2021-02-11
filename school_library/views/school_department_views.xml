@@ -3,7 +3,7 @@
         <field name="name">school_department list</field>
         <field name="model">school.department</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree editable="top">
                 <field name="name"/>
                 <field name="description" optional="hide"/>
                 <field name="course_ids" optional="show" widget="many2many_tags"/>

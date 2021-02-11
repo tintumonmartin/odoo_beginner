@@ -22,6 +22,9 @@
         'views/school_department_views.xml',
         'views/school_course_views.xml',
         'views/library_book_views.xml',
+        'views/student_attendance_views.xml',
         'views/templates.xml',
     ],
+    'application': True,
+    'images': ['static/description/icon.png'],
 }

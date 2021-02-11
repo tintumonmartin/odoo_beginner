@@ -13,6 +13,8 @@ class SchoolStudent(models.Model):
     active = fields.Boolean('Active', default=True)
     student_identity = fields.Char(readonly=True)
     user_id = fields.Many2one('res.users', string='Assigned to')
+    gender = fields.Selection([('male', 'Male'),
+                               ('female', 'Female')])
     department_id = fields.Many2one('school.department')
     phone = fields.Char(size=10)
     address = fields.Text()
@@ -27,7 +29,11 @@ class SchoolStudent(models.Model):
     fine_pending = fields.Float()
     remarks = fields.Text()
     mark = fields.Integer()
-    result = fields.Selection([('pass', 'Pass'), ('fail', 'Fail')], compute="_compute_result", store=True)
+    result = fields.Selection([('pass', 'Pass'),
+                               ('fail', 'Fail')], compute="_compute_result", store=True)
+    # result = fields.Selection(selection_add=[('absent', 'Absent'),
+    #                                          ('no_fees', 'Fee payment pending')],
+    #                           compute="_compute_result", store=True)
     book_ids = fields.Many2many('library.book', 'library_book_student_rel', 'student_id', 'book_id',
                                 string="Books", copy=False)
 
