@@ -7,3 +7,4 @@ access_school_teacher_principal,school.teacher.principal,model_school_teacher,gr
 access_library_book,access_library_book,model_library_book,,1,1,1,0
 access_school_department,access_school_department,model_school_department,,1,1,1,0
 access_school_course,access_school_course,model_school_course,,1,1,1,0
+access_student_attendance,access_student_attendance,model_student_attendance,,1,1,1,0

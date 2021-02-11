@@ -18,6 +18,40 @@
             </tree>
         </field>
     </record>
+    <record model="ir.ui.view" id="school_student_kanban">
+        <field name="name">School student kanban</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="image_512"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <!-- <div class="o_kanban_image">-->
+                            <!-- <img t-att-src="kanban_image('school.student', 'image_512', record.id.value)"-->
+                            <!-- alt=""/>-->
+                            <!-- </div>-->
+                            <div class="text-center">
+                                <h4 class="oe_partner_heading">
+                                    <a type="open">
+                                        <field name="name"/>
+                                    </a>
+                                </h4>
+                                <div class="oe_partner_heading">
+                                    <a type="open">
+                                        <field name="student_identity"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
     <record model="ir.ui.view" id="school_student_form">
         <field name="name">School student form</field>
         <field name="model">school.student</field>
@@ -35,6 +69,7 @@
                             <field name="student_identity"/>
                             <field name="name"/>
                             <field name="active"/>
+                            <field name="gender" widget="radio"/>
                             <field name="user_id"/>
                             <field name="phone" widget="password"/>
                             <field name="address" widget="password"/>
@@ -45,7 +80,7 @@
                             <field name="remarks"/>
                             <field name="mark"/>
                             <field name="result" attrs="{'invisible':[('mark', '=', 0)]}"/>
-                            <field name="department_id"
+                            <field name="department_id" widget="checkbox"
                                    options="{'no_open': True, 'no_quick_create': True, 'no_create_edit' : True}"/>
                             <field name="department_hod"/>
                         </group>
