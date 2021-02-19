@@ -17,8 +17,10 @@
     'version': '0.1',
     'depends': ['base'],
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'security/ir.model.access.csv',
+        # 'security/security.xml',
+        # 'data/ir_sequence_data.xml',
+        'views/user_views.xml',
         'views/templates.xml',
     ],
 }
