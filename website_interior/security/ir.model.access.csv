@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_website_interior_website_interior,website_interior.website_interior,model_website_interior_website_interior,base.group_user,1,1,1,1
