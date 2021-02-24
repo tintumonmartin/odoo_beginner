@@ -31,33 +31,41 @@
         <field name="name">School: Student</field>
         <field name="model_id" ref="model_school_student"/>
         <field name="global" eval="True"/>
-        <field name="perm_unlink" eval="False"/>
         <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="perm_unlink" eval="False"/>
         <field name="groups" eval="[(4,ref('group_student'))]"/>
     </record>
     <record id="student_teacher_rule" model="ir.rule">
         <field name="name">School: Teacher</field>
         <field name="model_id" ref="model_school_student"/>
         <field name="global" eval="True"/>
-        <field name="perm_unlink" eval="False"/>
         <field name="domain_force">[('department_id','=',user.student_department_id.id)]</field>
-        <!--        '|',('class_id','in',user.partner_id.class_taken_ids.ids),-->
-        <field name="groups" eval="[(4,ref('group_teacher')),(4,ref('group_teacher'))]"/>
+        <!-- '|',('class_id','in',user.partner_id.class_taken_ids.ids),-->
+        <field name="perm_unlink" eval="False"/>
+        <field name="groups" eval="[(4,ref('group_teacher'))]"/>
     </record>
     <record id="student_hod_rule" model="ir.rule">
         <field name="name">School: HOD</field>
         <field name="model_id" ref="model_school_student"/>
         <field name="global" eval="True"/>
-        <field name="perm_unlink" eval="False"/>
         <field name="domain_force">[('department_id','=',user.student_department_id.id)]</field>
-        <field name="groups" eval="[(4,ref('group_teacher'))]"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="groups" eval="[(4,ref('group_hod'))]"/>
+    </record>
+    <record id="student_principal_rule" model="ir.rule">
+        <field name="name">School: Principal</field>
+        <field name="model_id" ref="model_school_student"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_unlink" eval="False"/>
+        <field name="groups" eval="[(4,ref('group_principal'))]"/>
     </record>
     <record id="teacher_teacher_rule" model="ir.rule">
         <field name="name">School: Teacher</field>
         <field name="model_id" ref="model_school_teacher"/>
         <field name="global" eval="True"/>
-        <field name="perm_unlink" eval="False"/>
         <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="perm_unlink" eval="False"/>
         <field name="groups" eval="[(4,ref('group_teacher'))]"/>
     </record>
 </odoo>
