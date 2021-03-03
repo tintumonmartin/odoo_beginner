@@ -98,6 +98,29 @@
         </field>
     </record>
 
+    <record id='school_student_view_search' model='ir.ui.view'>
+        <field name="name">school.student.search</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+                <field name="student_identity"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="department_id"/>
+                <filter name="pass_student" string="Pass" domain="[('result', '=', 'pass')]" help="Passed Member"/>
+                <separator/>
+                <filter name="today" string="Today"
+                        domain="[('date_time_of_joining', '&gt;=', datetime.datetime.now().replace(hour=0, minute=0, second=0)),
+                                 ('date_time_of_joining', '&lt;=', datetime.datetime.now().replace(hour=23, minute=59, second=59))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_department_id" context="{'group_by': 'department_id'}" string="Department"/>
+                    <filter name="groupby_result" context="{'group_by': 'result'}" string="Result"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record model="ir.actions.act_window" id="school_student_action_window">
         <field name="name">Student</field>
         <field name="res_model">school.student</field>
