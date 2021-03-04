@@ -1,0 +1,51 @@
+<odoo>
+    <record model="ir.ui.view" id="railway_management_list">
+        <field name="name">railway_management list</field>
+        <field name="model">railway.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="train_name"/>
+                <field name="train_source"/>
+                <field name="destination"/>
+                <field name="arrival_time"/>
+                <field name="departure_time"/>
+                <field name="train_no"/>
+                <field name="train_seat" widget="radio"/>
+                <field name="a_seat2"/>
+                <field name="a_seat3"/>
+                <field name="b_seat1"/>
+                <field name="b_seat2"/>
+                <field name="b_seat3"/>
+                <field name="w_seat1"/>
+                <field name="w_seat2"/>
+                <field name="w_seat3"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="railway_management_action_window">
+        <field name="name">Railway Management</field>
+        <field name="res_model">railway.management</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--    <record model="ir.actions.server" id="railway_management_system.action_server">-->
+    <!--      <field name="name">railway_management_system server</field>-->
+    <!--      <field name="model_id" ref="model_railway_management_system_railway_management_system"/>-->
+    <!--      <field name="state">code</field>-->
+    <!--      <field name="code">-->
+    <!--        action = {-->
+    <!--          "type": "ir.actions.act_window",-->
+    <!--          "view_mode": "tree,form",-->
+    <!--          "res_model": model._name,-->
+    <!--        }-->
+    <!--      </field>-->
+    <!--    </record>-->
+
+    <menuitem name="Train" id="railway_management"/>
+
+    <menuitem id="railway_management_menu" parent="railway_management" action="railway_management_action_window"/>
+    <!--    <menuitem name="Server to list" id="railway_management_system" parent="railway_management_system.menu_2"-->
+    <!--              action="railway_management_system.action_server"/>-->
+</odoo>
