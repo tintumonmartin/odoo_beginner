@@ -20,6 +20,8 @@
         'security/ir.model.access.csv',
         # 'security/security.xml',
         # 'data/ir_sequence_data.xml',
+        'views/railway_management_views.xml',
+        'views/views.xml',
         'views/user_views.xml',
         'views/templates.xml',
     ],

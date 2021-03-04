@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_railway_users_railway_users,railway.users,model_railway_users,,1,1,1,1
+access_railway_management,railway.management,model_railway_management,,1,1,1,1
