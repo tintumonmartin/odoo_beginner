@@ -16,6 +16,7 @@ class SchoolStudent(models.Model):
     gender = fields.Selection([('male', 'Male'),
                                ('female', 'Female')])
     department_id = fields.Many2one('school.department')
+    course_id = fields.Many2one('school.course')
     phone = fields.Char(size=10)
     address = fields.Text()
     signature = fields.Binary()

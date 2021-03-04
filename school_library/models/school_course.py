@@ -12,7 +12,7 @@ class SchoolCourse(models.Model):
     hod = fields.Char(related='department_id.hod')
     department_id = fields.Many2one('school.department')
     description = fields.Text()
-    student_id = fields.One2many('school.student', 'department_id')
+    student_ids = fields.One2many('school.student', 'course_id')
 
     @api.model
     def create(self, values):

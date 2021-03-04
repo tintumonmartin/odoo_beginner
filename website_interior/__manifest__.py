@@ -13,10 +13,12 @@
     'version': '0.1',
     'depends': [
         'website',
+        'school_library',
     ],
     'data': [
         # 'security/ir.model.access.csv',
         'static/src/xml/website_sale.xml',
+        'views/school_student_inherit_views.xml',
         'views/views.xml',
         'views/templates.xml',
     ],

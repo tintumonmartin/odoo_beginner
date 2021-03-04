@@ -1,0 +1,53 @@
+<odoo>
+    <record model="ir.ui.view" id="school_student_list_inherit">
+        <field name="name">school_student list inherit</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="school_library.school_student_list"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="student_identity"/>
+            </field>
+            <field name="name" position="after">
+                <field name="active"/>
+                <field name="user_type"/>
+                <field name="phone"/>
+                <field name="address"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_student_form_inherit">
+        <field name="name">School student form inherit</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="school_library.school_student_form"/>
+        <field name="arch" type="xml">
+            <field name="department_hod" position="replace">
+                <field name="user_type"/>
+            </field>
+            <notebook position="inside">
+                <page name="hod" string="HOD Inherit">
+                    <group>
+                        <field name="department_hod"/>
+                    </group>
+                </page>
+            </notebook>
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="mobile"/>
+            </xpath>
+            <xpath expr="//notebook[last()]" position="inside">
+                <page name="student_type" string="Student Type">
+                    <group>
+                        <field name="student_type"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[@name='book']" position="after">
+                <page name="landline" string="Landline">
+                    <group>
+                        <field name="landline"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
