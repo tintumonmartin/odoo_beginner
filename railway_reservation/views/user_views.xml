@@ -1,0 +1,86 @@
+<odoo>
+    <record model="ir.ui.view" id="railway_users_list">
+        <field name="name">railway_users list</field>
+        <field name="model">railway.users</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id"/>
+                <field name="password"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="dob"/>
+                <field name="email"/>
+                <field name="aadhar_no"/>
+                <field name="mobile_no"/>
+                <field name="hide" invisible="1"/>
+                <field name="country_id" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                <field name="state_id" options="{'no_quick_create': True, 'no_create_edit' : True}"
+                       attrs="{'invisible':[('hide', '=', True)]}"/>
+                <field name="city"/>
+                <field name="city"/>
+                <field name="pincode"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="railway_users_form">
+        <field name="name">railway_users form</field>
+        <field name="model">railway.users</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="password"/>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="gender"/>
+                            <field name="age"/>
+                            <field name="dob"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="aadhar_no"/>
+                            <field name="mobile_no"/>
+                            <field name="hide" invisible="1"/>
+                            <field name="country_id" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                            <field name="state_id" options="{'no_quick_create': True, 'no_create_edit' : True}"
+                                   attrs="{'invisible':[('hide', '=', True)]}"/>
+                            <field name="city"/>
+                            <field name="city"/>
+                            <field name="pincode"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="railway_users_action_window">
+        <field name="name">Users</field>
+        <field name="res_model">railway.users</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+        <record model="ir.actions.server" id="railway_users.action_server">
+          <field name="name">railway_users server</field>
+          <field name="model_id" ref="model_railway_users_railway_users"/>
+          <field name="state">code</field>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": model._name,
+            }
+          </field>
+        </record>
+    -->
+
+    <menuitem name="Railway" id="railway_users_menu"/>
+    <menuitem name="Users list" id="railway_users_list" parent="railway_users_menu"
+              action="railway_users_action_window"/>
+</odoo>
