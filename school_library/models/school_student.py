@@ -9,13 +9,14 @@ class SchoolStudent(models.Model):
     _description = 'School Student'
     _rec_name = 'student_identity'
 
-    name = fields.Char("Student Name", required=True)
+    name = fields.Char(string="Student Name", required=True)
     active = fields.Boolean('Active', default=True)
     student_identity = fields.Char(readonly=True)
     user_id = fields.Many2one('res.users', string='Assigned to')
     gender = fields.Selection([('male', 'Male'),
                                ('female', 'Female')])
     department_id = fields.Many2one('school.department')
+    course_id = fields.Many2one('school.course')
     phone = fields.Char(size=10)
     address = fields.Text()
     signature = fields.Binary()
@@ -98,13 +99,17 @@ class SchoolStudent(models.Model):
         print(self)
         school_student = self.env['school.student'].search([])
         print(school_student)
-
+        school_student = self.search([])
+        print(school_student)
         print(len(school_student))
         # for student in school_student:
         #     print(student)
         #     print(student.result)
-        school_student = self.env['school.student'].search([('result', '=', 'pass')])
+        school_student = self.env['school.student'].search([('result', '=', 'pass')], limit=1, order='id desc')
         print("________________")
         print(school_student)
         print(len(school_student))
+        school_student = self.env['school.student'].search_read(
+            [('result', '=', 'pass')], fields=['name', 'gender', 'result'], limit=1, order='id asc')
+        print(school_student)
         print("school_student")

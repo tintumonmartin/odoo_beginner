@@ -5,11 +5,7 @@
         <field name="arch" type="xml">
             <tree>
                 <!-- <tree create="false" delete="false" import="false">-->
-                <field name="student_identity"/>
                 <field name="name"/>
-                <field name="active"/>
-                <field name="phone"/>
-                <field name="address"/>
                 <field name="department_id"/>
                 <field name="date_time_of_joining" optional="show"/>
                 <field name="deposit" sum="Total deposit"/>
@@ -18,6 +14,7 @@
             </tree>
         </field>
     </record>
+
     <record model="ir.ui.view" id="school_student_kanban">
         <field name="name">School student kanban</field>
         <field name="model">school.student</field>
@@ -50,7 +47,6 @@
             </kanban>
         </field>
     </record>
-
 
     <record model="ir.ui.view" id="school_student_form">
         <field name="name">School student form</field>
@@ -95,6 +91,29 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id='school_student_view_search' model='ir.ui.view'>
+        <field name="name">school.student.search</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+                <field name="student_identity"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="department_id"/>
+                <filter name="pass_student" string="Pass" domain="[('result', '=', 'pass')]" help="Passed Member"/>
+                <separator/>
+                <filter name="today" string="Today"
+                        domain="[('date_time_of_joining', '&gt;=', datetime.datetime.now().replace(hour=0, minute=0, second=0)),
+                                 ('date_time_of_joining', '&lt;=', datetime.datetime.now().replace(hour=23, minute=59, second=59))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_department_id" context="{'group_by': 'department_id'}" string="Department"/>
+                    <filter name="groupby_result" context="{'group_by': 'result'}" string="Result"/>
+                </group>
+            </search>
         </field>
     </record>
 
