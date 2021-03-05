@@ -13,6 +13,7 @@ class LibraryBook(models.Model):
     color = fields.Integer('Color Index')
     total_count = fields.Integer()
     availability = fields.Integer()
+    teacher_ids = fields.Many2many('school.teacher')
     student_ids = fields.Many2many('school.student', 'library_book_student_rel', 'book_id', 'student_id',
                                    string="Student", copy=False)
     remarks = fields.Text()

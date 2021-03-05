@@ -29,9 +29,10 @@
                         <field name="remarks"/>
                     </group>
                 </group>
-                <notebook string="Students">
-                    <page>
+                <notebook>
+                    <page string="Students">
                         <field name="student_ids"/>
+                        <field name="teacher_ids"/>
                     </page>
                 </notebook>
             </form>
