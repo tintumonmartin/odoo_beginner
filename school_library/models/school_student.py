@@ -91,24 +91,51 @@ class SchoolStudent(models.Model):
         print(self.mark)
         return super(SchoolStudent, self).copy(default=default)
 
+    @api.model
+    def default_get(self, fields):
+        print(self)
+        print(self.env.context)
+        print(fields)
+        res = super(SchoolStudent, self).default_get(fields)
+        print(res)
+        return res
+
     def unlink(self):
         # raise ValidationError(_('Not able to delete'))
         return super(SchoolStudent, self).unlink()
 
     def button_search(self):
         print(self)
+        print(self.mapped('address'))
         school_student = self.env['school.student'].search([])
         print(school_student)
         school_student = self.search([])
         print(school_student)
+        school_student_list = school_student.ids
+        print(school_student_list)
+        print(school_student.mapped('address'))
         print(len(school_student))
         # for student in school_student:
         #     print(student)
         #     print(student.result)
-        school_student = self.env['school.student'].search([('result', '=', 'pass')], limit=1, order='id desc')
+        school_student = self.env['school.student'].browse(1)
+        print("_browse_")
+        print(school_student)
+        school_student = self.env['school.student'].browse(school_student_list)
+        print(school_student)
+        school_student = self.env['school.student'].search_count([('result', '=', 'pass')], order='id desc')
+        print("_Count_")
+        print(school_student)
         print("________________")
+        school_student = self.env['school.student'].search([('result', '=', 'pass')], order='id desc')
+        print(school_student)
+        school_student = self.env['school.student'].search([('result', '=', 'pass')], limit=1, order='id desc')
+        print(school_student)
+        school_student = self.env['school.student'].search([('result', '=', 'pass')], offset=3, limit=1,
+                                                           order='id desc')
         print(school_student)
         print(len(school_student))
+        print("________________")
         school_student = self.env['school.student'].search_read(
             [('result', '=', 'pass')], fields=['name', 'gender', 'result'], limit=1, order='id asc')
         print(school_student)
