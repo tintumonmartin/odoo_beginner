@@ -14,3 +14,5 @@ class SchoolStudent(models.Model):
     landline = fields.Char()
     student_type = fields.Selection([('alumni', 'Alumni'),
                                      ('current', 'Current')], default='current')
+    # Fields Incremental Definition
+    fine_paid = fields.Float(string='Paid fine',help='Fine paid by student')

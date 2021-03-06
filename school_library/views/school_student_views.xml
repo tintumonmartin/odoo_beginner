@@ -73,6 +73,7 @@
                         <group>
                             <field name="date_time_of_joining" required="1"/>
                             <field name="deposit"/>
+                            <field name="fine_paid"/>
                             <field name="remarks"/>
                             <field name="mark"/>
                             <field name="result" attrs="{'invisible':[('mark', '=', 0)]}"/>

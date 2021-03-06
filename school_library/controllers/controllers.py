@@ -8,13 +8,16 @@ class SchoolLibrary(http.Controller):
     def school(self, **kw):
         return "Hello, Students"
 
-    @http.route('/school/school_student/', type='json', auth='public')
+    @http.route('/school/school_student/', type='http', auth='public')
     def school_student(self, **kw):
+        print(request.env.uid)
+        print(request.env.user)
         object = request.env['school.student'].sudo().search_read(
             [],
             fields=['name', 'student_identity', 'department_id', 'phone', 'address', 'mark', 'result'])
-        # print(object)
-        return object
+        print(object)
+        print(object[0])
+        return str(object[0])
 
     @http.route('/school/school_teacher/', type='json', auth='user')
     def school_teacher(self, **kw):

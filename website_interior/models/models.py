@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
 
 
-# class website_interior(models.Model):
-#     _name = 'website_interior.website_interior'
-#     _description = 'website_interior.website_interior'
+class WebsiteInterior(models.Model):
+    _name = 'website.interior'
+    _description = 'website interior'
 
-#     name = fields.Char()
+    name = fields.Char()
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
 #     description = fields.Text()

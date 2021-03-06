@@ -26,7 +26,7 @@ class SchoolStudent(models.Model):
     date_time_of_joining = fields.Datetime()
     deposit = fields.Float(default=10000)
     fine = fields.Float(default=0.0)
-    fine_paid = fields.Float()
+    fine_paid = fields.Float(required=True, default=25)
     fine_pending = fields.Float()
     remarks = fields.Text()
     mark = fields.Integer()
