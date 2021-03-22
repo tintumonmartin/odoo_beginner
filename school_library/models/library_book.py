@@ -18,6 +18,9 @@ class LibraryBook(models.Model):
                                    string="Student", copy=False)
     remarks = fields.Text()
 
+    from_partner_id = fields.Many2one('res.partner', string='From Partner')
+    to_partner_id = fields.Many2one('res.partner', string='To Partner')
+
     @api.model
     def create(self, values):
         print(values)

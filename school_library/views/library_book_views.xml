@@ -24,9 +24,15 @@
                         <field name="name"/>
                         <field name="author"/>
                         <field name="total_count"/>
+                        <field name="remarks"/>
                     </group>
                     <group>
-                        <field name="remarks"/>
+                        <field name="from_partner_id" widget="res_partner_many2one"
+                               context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                               options='{"always_reload": True}'/>
+                        <field name="to_partner_id" widget="res_partner_many2one"
+                               context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                               options='{"always_reload": True}'/>
                     </group>
                 </group>
                 <notebook>
@@ -40,7 +46,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="library_book_action_window">
-        <field name="name">library_book window</field>
+        <field name="name">Library Book</field>
         <field name="res_model">library.book</field>
         <field name="view_mode">tree,form</field>
     </record>
