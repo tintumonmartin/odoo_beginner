@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report id="print_mark_report_pdf"
+            string="Student Marks Report"
+            model="school_student"
+            report_type="qweb-pdf"
+            name="school_library.print_mark_report"
+            file="school_library.print_mark_report"
+            menu="True"/>
+</odoo>

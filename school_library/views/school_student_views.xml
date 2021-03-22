@@ -56,6 +56,7 @@
                 <!-- <form duplicate="false">-->
                 <header>
                     <button name="button_search" string="Search" type="object"/>
+                    <button name="button_report" string="Mark report" type="object"/>
                 </header>
                 <sheet>
                     <group>

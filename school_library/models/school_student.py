@@ -140,3 +140,9 @@ class SchoolStudent(models.Model):
             [('result', '=', 'pass')], fields=['name', 'gender', 'result'], limit=1, order='id asc')
         print(school_student)
         print("school_student")
+
+    def button_report(self):
+        data = {
+            'model_id': self.id,
+        }
+        return self.env.ref('school_library.print_mark_report_pdf').report_action(self, data=data)

@@ -24,6 +24,8 @@
         'views/library_book_views.xml',
         'views/student_attendance_views.xml',
         'views/templates.xml',
+        'report/mark_report.xml',
+        'report/mark_report_template.xml',
     ],
     'application': True,
     'images': ['static/description/icon.png'],
