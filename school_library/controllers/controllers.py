@@ -8,33 +8,54 @@ class SchoolLibrary(http.Controller):
     def school(self, **kw):
         return "Hello, Students"
 
-    @http.route('/school/school_student/', type='http', auth='public')
-    def school_student(self, **kw):
-        print(request.env.uid)
+    @http.route('/api/json/school_student/', type='json', auth='public')
+    def school_student_json(self, **kw):
         print(request.env.user)
-        object = request.env['school.student'].sudo().search_read(
-            [],
-            fields=['name', 'student_identity', 'department_id', 'phone', 'address', 'mark', 'result'])
+        print(request)
+        print(self)
+        print(kw)
+        object = request.env['school.student'].sudo().search_read([])
+        # print(object)
+        # object = request.env['school.teacher'].sudo().search([])
         print(object)
-        print(object[0])
-        return str(object[0])
+        # return object
+        return object
+
+    @http.route('/api/html/school_student/', type='http', auth='none', csrf=False)
+    def school_student_html(self, **kw):
+        print(request.env.user)
+        print(request)
+        print(self)
+        print(kw)
+        object = request.env['school.student'].sudo().search_read([])
+        # print(object)
+        # object = request.env['school.teacher'].sudo().search([])
+        print(object)
+        # return object
+        return "<html><body>" + str(object) + "</body></html>"
+        # return "Testing"
 
     @http.route('/school/school_teacher/', type='json', auth='user')
     def school_teacher(self, **kw):
-        object = request.env['school.teacher'].sudo().search_read(
-            [],
-            fields=['name', 'teacher_identity', 'department_id', 'phone', 'address']
-        )
-        return object
+        print(request.env.user)
+        print(request)
+        print(self)
+        print(kw)
+        object = request.env['school.student'].sudo().search([])
+        print(object)
+        object = request.env['school.teacher'].sudo().search([])
+        print(object)
+        # return object
+        return "Hello, Students"
 
-    @http.route('/school_library/school_library/objects/', auth='public')
+    @http.route('/school_library/objects/', auth='public')
     def list(self, **kw):
         return http.request.render('school_library.listing', {
-            'root': '/school_library/school_library',
+            'root': '/school_library',
             'objects': http.request.env['school.student'].search([]),
         })
 
-    @http.route('/school_library/school_library/objects/<model("school_library.school_library"):obj>/', auth='public')
+    @http.route('/school_library/objects/<model("school.student"):obj>/', auth='public')
     def object(self, obj, **kw):
         return http.request.render('school_library.object', {
             'object': obj

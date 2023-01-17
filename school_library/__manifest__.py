@@ -14,8 +14,8 @@
         'base',
     ],
     'data': [
-        'security/ir.model.access.csv',
         'security/security.xml',
+        'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
         'views/school_student_views.xml',
         'views/school_teacher_views.xml',
